@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Dey's E-school - Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src = "https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    <script src = "https://maps.googleapis.com/maps/api/js"></script>
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+</head>
+<body class="bg-cover bg-center bg-blue-700">
+    <section class = "hero is-warning is-bold">
+        <div class = "hero-body">
+           <div class = "container">
+              <h1 class = "title">Dey's E-School </h1>
+              <h2 class = "subtitle">Online Learning </h2>
+           </div>
+        </div>
+     </section>
+
+    <nav class="absolute top-4 right-10 px-4 py-2">
+        <ul class="flex space-x-6 text-black">
+            <li><a href="home.html" class="hover:text-gray-300">Home</a></li>
+            <li><a href="aboutus.html" class="hover:text-gray-300">About Us</a></li>
+            <li><a href="contactus.html" class="hover:text-gray-300">Contact Us</a></li>
+            <li><a href="service.html" class="hover:text-gray-300">Service</a></li>
+        </ul>
+    </nav>
+
+    <div class="container mx-auto px-4">
+        <section class="text mt-10">
+            <h1 class="text-4xl font-bold text-black">Contact Us</h1>
+            <h2 class="text-2xl text-black">Information</h2>
+            <div class="text-align-left mt-6">
+            <p class="text-black">E-School System: Revolutionizing Education</p>
+            <p class="text-black">The E-School System is an innovative platform that integrates digital tools and resources to facilitate<br>online learning and streamline traditional education systems. It leverages modern technology to<br>provide a flexible, accessible, and efficient learning environment for students and educators worldwide.<br
+                Key Features: <br>
+                Virtual Classrooms and Online Lectures : <br>               
+                Live video sessions for real-time interaction between teachers and students.<br>
+                Recorded lectures for later access, enabling self-paced learning. <br>
+
+               Learning Management System (LMS):<br>
+                
+                Digital storage for course materials, assignments, and assessments.<br>
+                Features such as grade tracking, feedback, and progress monitoring.<br>
+
+               Collaboration Tools:<br>
+                
+                Discussion forums, group chats, and collaborative document editing to foster teamwork.<br>
+                Peer review and feedback mechanisms for interactive learning experiences.<br>
+
+               Multimedia Content:<br>
+                
+                Interactive videos, quizzes, animations, and virtual labs make learning engaging and effective.<br>
+                Access to a wide range of educational resources, including e-books, articles, and research papers.<br>
+
+               Parental Monitoring:<br>
+                
+                Parent portals allow real-time updates on student progress, attendance, and teacher feedback.<br>
+            </p>
+        </div>
+            <h3 class="text-xl font-semibold mt-6">Address:</h3>
+            <address class="text-black mt-2 leading-relaxed">
+               Hyderabad<br>
+                +91 97005 21561<br>
+                 deyseschool@gmail.com<br>
+            </address>
+
+            <h3 class="text-xl font-semibold mt-6">Hours:</h3>
+            <p class="text-black">Open: 9:00 AM - 3:00 PM</p>
+        </section>
+
+        <section class="bg-black bg-opacity-80 text-white rounded-lg p-6 mt-10 mx-auto max-w-md">
+            <h3 class="text-xl font-semibold text-center mb-4">Contact Form</h3>
+            <form action="#" method="post" class="space-y-4">
+                <input type="text" name="first_name" placeholder="First Name" required class="w-full p-3 rounded border border-gray-400 bg-gray-100">
+                <input type="text" name="last_name" placeholder="Last Name" required class="w-full p-3 rounded border border-gray-400 bg-gray-100">
+                <input type="text" name="state" placeholder="State" required class="w-full p-3 rounded border border-gray-400 bg-gray-100">
+                <input type="text" name="country" placeholder="Country" required class="w-full p-3 rounded border border-gray-400 bg-gray-100">
+                <input type="email" name="email" placeholder="Email" required class="w-full p-3 rounded border border-gray-400 bg-gray-100">
+                <textarea name="message" placeholder="Your Question" rows="4" required class="w-full p-3 rounded border border-gray-400 bg-gray-100"></textarea>
+                <button type="submit" class="w-full bg-black -500 text-white p-3 rounded hover:bg-green-600">Send Message</button>
+            </form>
+        </section>
+    </div>
+    <div id = "sample" style = " padding-left: 10%;  width:1450px; height:400px;"></div>
+    <script>
+        function loadMap() {
+           
+           var mapOptions = {
+              center:new google.maps.LatLng(17.4687728, 78.4592141), 
+              zoom:15,  
+              mapTypeId:google.maps.MapTypeId.SATELLITE
+           };
+               
+           var map = new google.maps.Map(document.getElementById("sample"),mapOptions);
+        }
+           
+        google.maps.event.addDomListener(window, 'load', loadMap);
+     </script>
+</body>
+</html>
+

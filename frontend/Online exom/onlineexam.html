@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js" defer></script>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-600 text-white p-6">
+        <h1 class="text-3xl font-bold text-center">Online Exam</h1>
+        <p class="text-center mt-2">Grades 1-10</p>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Grade Selection -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Select Grade</h2>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4" id="gradeSelection">
+                <!-- Grade buttons will be added dynamically -->
+            </div>
+        </div>
+
+        <!-- Subject Selection -->
+        <div class="mb-8 hidden" id="subjectSection">
+            <h2 class="text-2xl font-semibold mb-4">Select Subject</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="subjectSelection">
+                <!-- Subjects will be added dynamically based on grade -->
+            </div>
+        </div>
+
+        <!-- Exam Section -->
+        <div class="hidden" id="examSection">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-semibold" id="examTitle">Exam Title</h3>
+                    <div class="text-lg font-medium" id="timer">Time: 30:00</div>
+                </div>
+                <div id="questionContainer" class="space-y-6">
+                    <!-- Questions will be loaded here -->
+                </div>
+                <button id="submitExam" class="mt-6 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors hidden">
+                    Submit Exam
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Result Modal -->
+    <div id="resultModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg max-w-md w-full">
+            <h3 class="text-2xl font-bold mb-4">Exam Results</h3>
+            <p id="resultScore" class="text-lg mb-4"></p>
+            <button onclick="closeModal()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                Close
+            </button>
+        </div>
+    </div>
+</body>
+</html>

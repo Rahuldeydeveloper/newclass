@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Class Schedule</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-wrap justify-center gap-6 p-4 pt-40">
+
+<div class="schedule bg-white max-w-sm p-6 rounded-lg shadow-md">
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Subject:</div>
+        <div>Mathematics</div>
+    </div>
+
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Teacher Name:</div>
+        <div>Mr. Smith</div>
+    </div>
+
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Time:</div>
+        <div>2:10pm to 2:50pm</div>
+    </div>
+    <button class="joinButton bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Join</button>
+</div>
+
+<div class="schedule bg-white max-w-sm p-6 rounded-lg shadow-md">
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Subject:</div>
+        <div>English</div>
+    </div>
+
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Teacher Name:</div>
+        <div>Mr. Smith</div>
+    </div>
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Time:</div>
+        <div>10:30am to 12:10pm</div>
+    </div>
+    <button class="joinButton bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Join</button>
+</div>
+
+<div class="schedule bg-white max-w-sm p-6 rounded-lg shadow-md">
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Subject:</div>
+        <div>Hindi</div>
+    </div>
+
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Teacher Name:</div>
+        <div>Mr. Smith</div>
+    </div>
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Time:</div>
+        <div> 12:50pm to 1:30pm</div>
+    </div>
+    <button class="joinButton bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Join</button>
+</div>
+
+<div class="schedule bg-white max-w-sm p-6 rounded-lg shadow-md">
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Subject:</div>
+        <div>Telugu</div>
+    </div>
+
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Teacher Name:</div>
+        <div>Mr. Smith</div>
+    </div>
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Time:</div>
+        <div> 9:40am to 10:20am</div>
+    </div>
+    <button class="joinButton bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Join</button>
+</div>
+
+<div class="schedule bg-white max-w-sm p-6 rounded-lg shadow-md">
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Subject:</div>
+        <div>Evs</div>
+    </div>
+
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Teacher Name:</div>
+        <div>Mr. Smith</div>
+    </div>
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Time:</div>
+        <div>1:30pm to 2:10pm</div>
+    </div>
+    <button class="joinButton bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Join</button>
+</div>
+
+<div class="schedule bg-white max-w-sm p-6 rounded-lg shadow-md">
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Subject:</div>
+        <div>GK</div>
+    </div>
+
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Teacher Name:</div>
+        <div>Mr. Smith</div>
+    </div>
+    <div class="class-info flex justify-between mb-4">
+        <div class="info-label font-bold">Time:</div>
+        <div> 9:00am to 9:40am</div>
+    </div>
+    <button class="joinButton bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Join</button>
+</div>
+
+<!-- Repeat for other schedules -->
+
+<script>
+    // Add event listener for each 'Join' button if needed
+    var joinButtons = document.querySelectorAll('.joinButton');
+    joinButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Replace 'YOUR_GMEET_LINK' with your actual Google Meet link
+            var gMeetLink = 'https://meet.google.com/ryi-yxxu-syw';
+            window.open(gMeetLink, 'https://meet.google.com/ryi-yxxu-syw');
+        });
+    });
+</script>
+
+
+</body>
+</html>

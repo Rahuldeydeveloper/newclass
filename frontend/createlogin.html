@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center text-gray-900">
+
+    <div class="w-full max-w-sm mx-auto bg-white shadow-md rounded-lg p-6">
+        <!-- Signup Form -->
+        <div id="signupForm">
+            <h2 class="text-2xl font-bold mb-4">Create an Account</h2>
+            <form>
+                <div class="mb-4">
+                    <label for="signupUsername" class="block text-gray-700 font-bold mb-2">Username</label>
+                    <input type="text" id="signupUsername" class="w-full p-3 border rounded-md" placeholder="Enter username">
+                </div>
+                <div class="mb-4">
+                    <label for="signupPassword" class="block text-gray-700 font-bold mb-2">Password</label>
+                    <input type="password" id="signupPassword" class="w-full p-3 border rounded-md" placeholder="Enter password">
+                </div>
+                <div>
+                    <button type="button" id="createAccount" class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700">
+                        Create Account
+                    </button>
+                </div>
+                <p class="mt-4 text-center text-sm">
+                    Already have an account? <a href="#" id="showLogin" class="text-blue-600 font-bold">Log In</a>
+                </p>
+            </form>
+        </div>
+
+        <!-- Login Form -->
+        <div id="loginForm" class="hidden">
+            <h2 class="text-2xl font-bold mb-4">Log In</h2>
+            <form>
+                <div class="mb-4">
+                    <label for="loginUsername" class="block text-gray-700 font-bold mb-2">Username</label>
+                    <input type="text" id="loginUsername" class="w-full p-3 border rounded-md" placeholder="Enter username">
+                </div>
+                <div class="mb-4">
+                    <label for="loginPassword" class="block text-gray-700 font-bold mb-2">Password</label>
+                    <input type="password" id="loginPassword" class="w-full p-3 border rounded-md" placeholder="Enter password">
+                </div>
+                <div>
+                    <button type="button" id="login" class="w-full bg-green-600 text-white py-3 rounded-lg font-bold hover:bg-green-700">
+                        Log In
+                    </button>
+                </div>
+                <p class="mt-4 text-center text-sm">
+                    Don't have an account? <a href="#" id="showSignup" class="text-green-600 font-bold">Sign Up</a>
+                </p>
+            </form>
+        </div>
+
+        <!-- Message Display -->
+        <p id="responseMessage" class="mt-4 text-center text-lg"></p>
+    </div>
+
+    <script>
+        // Toggle between forms
+        const signupForm = document.getElementById('signupForm');
+        const loginForm = document.getElementById('loginForm');
+        const showLogin = document.getElementById('showLogin');
+        const showSignup = document.getElementById('showSignup');
+
+        showLogin.addEventListener('click', () => {
+            signupForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+        });
+
+        showSignup.addEventListener('click', () => {
+            loginForm.classList.add('hidden');
+            signupForm.classList.remove('hidden');
+        });
+
+        // Create account
+        document.getElementById('createAccount').addEventListener('click', async () => {
+            const username = document.getElementById('signupUsername').value;
+            const password = document.getElementById('signupPassword').value;
+
+            if (!username || !password) {
+                document.getElementById('responseMessage').textContent = 'Please fill all fields.';
+                document.getElementById('responseMessage').style.color = 'red';
+                return;
+            }
+
+            const response = await fetch('http://localhost:5000/api/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password }),
+            });
+
+            const data = await response.json();
+            document.getElementById('responseMessage').textContent = data.message;
+            document.getElementById('responseMessage').style.color = response.ok ? 'green' : 'red';
+        });
+
+        // Log in
+        document.getElementById('login').addEventListener('click', async () => {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (!username || !password) {
+                document.getElementById('responseMessage').textContent = 'Please fill all fields.';
+                document.getElementById('responseMessage').style.color = 'red';
+                return;
+            }
+
+            const response = await fetch('http://localhost:5000/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password }),
+            });
+
+            const data = await response.json();
+            document.getElementById('responseMessage').textContent = data.message;
+            document.getElementById('responseMessage').style.color = response.ok ? 'green' : 'red';
+        });
+    </script>
+</body>
+</html>

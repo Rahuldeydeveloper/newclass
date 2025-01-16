@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Dey's E-School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-80">
+        <h2 class="text-2xl font-bold text-center mb-6">Login</h2>
+        <form id="loginForm">
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700 font-bold mb-2">Username</label>
+                <input type="text" id="username" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-200" placeholder="Enter username">
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700 font-bold mb-2">Password</label>
+                <input type="password" id="password" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-200" placeholder="Enter password">
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md font-bold hover:bg-blue-600">
+                Login
+            </button>
+        </form>
+        <p id="errorMessage" class="text-red-500 text-center mt-4 hidden">Invalid username or password!</p>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Check credentials
+            if (username === "rahul" && password === "1234") {
+                // Redirect to the main page
+                window.location.href = "userinterface.html";
+            } else {
+                // Show error message
+                document.getElementById("errorMessage").classList.remove("hidden");
+            }
+            if (username === "rahul" && password === "1234") {
+             // Mark the user as logged in
+            sessionStorage.setItem("isLoggedIn", true);
+             // Redirect to the main page
+              window.location.href = "userinterface.html";
+}
+        });
+    </script>
+</body>
+
+</html>

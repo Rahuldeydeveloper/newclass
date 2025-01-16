@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script src = "https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    <style>
+        .reversed-icon {
+            transform: scaleX(-1); /* Flips the icon horizontally */
+        }
+        .error {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+ </head>
+</head>
+
+<body class="bg-aqua">
+    <nav class="absolute top-4 right-10 bg-gray-800 bg-opacity-70 rounded-lg px-6 py-3">
+        <ul class="flex space-x-6">
+            <li><a href="home.html" class="text-white hover:text-gray-300">Home</a></li>
+            <li><a href="aboutus.html" class="text-white hover:text-gray-300">About Us</a></li>
+            <li><a href="contactus.html" class="text-white hover:text-gray-300">Contact Us</a></li>
+            <li><a href="service.html" class="text-white hover:text-gray-300">Service</a></li>
+        </ul>
+    </nav>
+    <section class = "hero is-warning is-bold">
+        <div class = "hero-body">
+           <div class = "container">
+              <h1 class = "title">Dey's E-School </h1>
+              <h2 class = "subtitle">Online Learning </h2>
+           </div>
+        </div>
+     </section>
+
+    <div id="rg" class="absolute top-[30%] left-[35%] bg-white p-6 rounded-lg shadow-md">
+        <form>
+            <h2 class="text-2xl font-semibold mb-4">Admission Form</h2>
+
+            <label for="name" class="block">Full Name</label>
+            <div class = "control">
+                <p class = "control has-icons-left has-icons-right">
+                   <input class = "input" type = "Name" placeholder = "Enter user name">
+                   <span class = "icon is-small is-left">
+                      <i class = "fas fa-user"></i>
+                   </span>
+                </p>
+             </div>
+            <label for="fatherName" class="block">Father's Name</label>
+            <div class = "control">
+                <p class = "control has-icons-left has-icons-right">
+                   <input class = "input" type = "Name" placeholder = "Enter user name">
+                   <span class = "icon is-small is-left">
+                      <i class = "fas fa-user"></i>
+                   </span>
+                </p>
+             </div>
+            <label for="dateOfBirth" class="block">Date of Birth</label>
+            <input type="date" id="dateOfBirth" name="dateOfBirth" required class="block w-full border rounded p-2 mb-4">
+
+            <label for="number" class="block">Parent Mobile No</label>
+          <div class="control">
+    <p class="control has-icons-left">
+        <input class="input" type="text" placeholder="Enter your mobile number">
+        <span class="icon is-small is-left">
+            <i class="fas fa-phone fa-lg reversed-icon"></i>
+        </span>
+    </p>
+</div>
+
+            <label for="email" class="block">Email</label>
+            <div class = "control">
+                <p class = "control has-icons-left">
+                   <input class = "input" type = "mail" placeholder = "Enter your email id">
+                   <span class = "icon is-small is-left">
+                      <i class = "fas fa-envelope"></i>
+                   </span>
+                </p>
+             </div>
+            <label for="address" class="block">Address</label>
+            <input type="text" placeholder="Enter your address " required class="block w-full border rounded p-2 mb-4">
+
+            <label for="grade" class="block">Grade Applying</label>
+            <select id="grade" name="grade" required class="block w-full border rounded p-2 mb-4">
+                <option value="">Select</option>
+                <option value="kindergarten">Kindergarten</option>
+                <option value="elementary">Elementary</option>
+                <option value="middle">Middle School</option>
+                <option value="high">High School</option>
+            </select>
+
+            <label for="state" class="block">Select State:</label>
+            <select id="state" onchange="updateCities()" class="block w-full border rounded p-2 mb-4">
+                <option value="select">Select</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="West Bengal">West Bengal</option>
+            </select>
+
+            <label for="city" class="block"> City:</label>
+            <input class = "input" type = "mail" placeholder = "Enter your City">
+
+            <button type="button" onclick="validateForm()" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-700">Submit</button>
+        </form>
+    </div>
+        
+<script>
+            function updateCities() {
+                var stateSelect = document.getElementById("state");
+                var citySelect = document.getElementById("city");
+                citySelect.innerHTML = "";
+                var selectedState = stateSelect.value;
+                switch (selectedState) {
+                    case "Andhra Pradesh":
+                        var cities = ["Eluru", "Bezawada","Visakhapatnam","Vijayawada","Guntur","Nellore", "Kurnool","Kadapa", "Anantapur","Tirupati","Rajahmundry"];
+                        break;
+                    case "Arunachal Pradesh":
+                         var cities= ["Itanagar","Naharlagun","Pasighat","Roing","Tezu"];
+                         break;
+                    case "Assam" :
+                         var cities= [ "Guwahati","Dispur","Silchar","Dibrugarh","Jorhat"];
+                         break;
+                    case "Bihar" :
+                        var cities = [ "Patna","Gaya","Muzaffarpur","Bhagalpur","Darbhanga"];
+                        break; 
+                    case "Chhattisgarh" : 
+                         var cities = ["Raipur","Bhilai","Durg","Bilaspur","Korba"];
+                         break;
+                    case "Goa" :
+                        var cities = ["Panaji","Vasco da Gama","Margao","Mapusa"];
+                        break
+                    case "Gujarat" : 
+                          var cities = [ "Ahmedabad","Surat","Vadodara","Rajkot","Gandhinagar"];
+                          break;
+                    case "Haryana" :
+                        var cities = [ "Chandigarh","Faridabad","Gurgaon","Panipat","Ambala"];
+                        break;
+                    case "Himachal Pradesh" :
+                         var cities = ["Shimla","Manali","Dharamshala","Kullu","Chamba"];
+                         break;
+                    case "Jharkhand" :
+                          var cities = ["Ranchi","Jamshedpur","Dhanbad","Bokaro","Hazaribagh"  ];
+                          break;
+                    case "Karnataka" :
+                         var cities =["Bangalore","Mysore","Hubli-Dharwad","Mangalore","Belgaum"]; 
+                         break;
+                    case "Kerala" : 
+                        var cities = ["Thiruvananthapuram","Kochi","Kozhikode","Thrissur","Kollam"];
+                        break;
+                    case "Madhya Pradesh" : 
+                          var cities = ["Bhopal","Indore","Jabalpur","Gwalior","Ujjain"];
+                          break;
+                    case "Maharashtra" : 
+                          var cities = ["Mumbai","Pune","Nagpur","Nashik","Thane"];
+                          break;
+                    case "Manipur" : 
+                          var cities = ["Imphal","Thoubal","Bishnupur","Ukhrul"];
+                          break;
+                    case "Meghalaya" : 
+                          var cities = ["Shillong","Tura","Jowai","Nongpoh","Williamnagar"];
+                          break;
+                    case "Mizoram" : 
+                          var cities = ["Aizawl","Lunglei","Champhai","Serchhip","Kolasib"];
+                          break;
+                    case "Nagaland" :
+                         var cities = ["Kohima","Dimapur","Mokokchung","Tuensang","Wokha"];
+                         break;
+                    case "Odisha" : 
+                         var cities = ["Bhubaneswar","Cuttack","Puri","Rourkela","Sambalpur"];
+                         break;
+                    case "Punjab" :
+                         var cities = [ "Amritsar", "Ludhiana","Jalandhar","Patiala","Chandigarh"];
+                         break;
+                    case "Rajasthan" :
+                         var cities = [ "Jaipur","Jodhpur", "Udaipur","Ajmer","Kota" ];
+                         break;
+                    case "Sikkim" :
+                        var cities = ["Gangtok","Namchi","Mangan","Ravangla","Singtam"];
+                        break;
+                    case "Tamil nadu" :
+                          var cities = [  "Chennai","Coimbatore","Madurai","Trichy","Salem"];
+                          break;
+                    case "Telangana":
+                        var cities = ["Hyderabad", "Secunderabad","Karimnagar","Warangal","Nizamabad","Khammam"];
+                        break;
+                    case "Tripura" :
+                        var cities = ["Agartala","Udaipur","Dharmanagar","Kailashahar","Ambassa"];
+                        break;
+                    case " Uttarakhand":
+                        var cities =["Dehradun","Haridwar","Rishikesh","Nainital","Mussoorie"];
+                        break;
+                    case "Uttar pradesh" :
+                        var cities = ["Agra","Aligarh","Allahabad","Amethi","Ayodhya","Bareilly","Ghaziabad","Gorakhpur","Jhansi","Kanpur","Lucknow","Mathura","Meerut","Noida","Prayagraj","Varanasi"];
+                        break;
+                    case"West Bengal":
+                         var cities = [ "Kolkata","Howrah","Durgapur","Asansol","Siliguri" ];
+                        break;
+                    default:
+                    var cities = [];
+
+                }
+                for (var i = 0; i < cities.length; i++) {
+                    var option = document.createElement("option");
+                    option.text = cities[i];
+                    citySelect.add(option);
+                }
+            }
+        </script>   
+</form>
+    
+    <script>
+         function validateForm() {
+    var FullName = document.getElementById('FullName').value;
+    var dateOfBirth = document.getElementById('dateOfBirth').value;
+    var FatherName = document.getElementById('parentName').value;
+    var parentMoblieNo= document.getElementById('parentMoblieNo').value;
+    var email = document.getElementById('email').value;
+    var address = document.getElementById('address').value;
+    var grade = document.getElementById('grade').value;
+    var stateSelect = document.getElementById("state").value;
+    var citySelect = document.getElementById("city").value;
+
+
+    var errorContainer = document.getElementById('errorContainer');
+    errorContainer.innerHTML = '';
+
+    if (!fullName || !dateOfBirth || !parentName || !parentMoblieNo || !address || !grade || !stateSelect || !citySelect) {
+        errorContainer.innerHTML = '<p class="error">All fields are required</p>';
+        return;
+    }
+
+    if (!/^\d{10}$/.test(parentMobileNo)) {
+                errorContainer.innerHTML = '<p class="error">Enter a valid 10-digit mobile number.</p>';
+                return;
+
+          }
+
+            alert('Form submitted successfully!');
+        }
+</script>                          
+  </body>
+</html>

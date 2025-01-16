@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Attendance System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-4">School Attendance System</h1>
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="class">
+                    Select Class
+                </label>
+                <select id="class" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="">Select a class</option>
+                    <option value="class1">Class 1</option>
+                    <option value="class2">Class 2</option>
+                    <option value="class3">Class 3</option>
+                    <option value="class4">Class 4</option>
+                    <option value="class5">Class 5</option>
+                    <option value="class6">Class 6</option>
+                    <option value="class7">Class 7</option>
+                    <option value="class8">Class 8</option>
+                    <option value="class9">Class 9</option>
+                    <option value="class10">Class 10</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="date">
+                    Date
+                </label>
+                <input type="date" id="date" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div id="studentList" class="mb-4">
+                <!-- Student list will be populated here -->
+            </div>
+            <div class="flex items-center justify-between">
+                <button id="saveBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                    Save Attendance
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const students = {
+            class1: ['John Doe', 'Jane Smith', 'Mike Johnson'],
+            class2: ['Emily Brown', 'David Lee', 'Sarah Wilson'],
+            class3: ['Tom Harris', 'Lucy Taylor', 'Chris Anderson'],
+            class4: ['Emma Davis', 'James Wilson', 'Olivia Martin'],
+            class5: ['William Thompson', 'Sophia Clark', 'Daniel White'],
+            class6: ['Ava Rodriguez', 'Ethan Moore', 'Isabella Taylor'],
+            class7: ['Mason Anderson', 'Charlotte Lewis', 'Michael Scott'],
+            class8: ['Amelia Turner', 'Benjamin King', 'Harper Evans'],
+            class9: ['Evelyn Adams', 'Alexander Hall', 'Abigail Baker'],
+            class10: ['Elizabeth Young', 'Joseph Allen', 'Sofia Mitchell']
+        };
+
+        const classSelect = document.getElementById('class');
+        const dateInput = document.getElementById('date');
+        const studentList = document.getElementById('studentList');
+        const saveBtn = document.getElementById('saveBtn');
+
+        classSelect.addEventListener('change', populateStudentList);
+        saveBtn.addEventListener('click', saveAttendance);
+
+        function populateStudentList() {
+            const selectedClass = classSelect.value;
+            if (!selectedClass) {
+                studentList.innerHTML = '';
+                return;
+            }
+
+            let html = '<ul class="list-none">';
+            students[selectedClass].forEach((student, index) => {
+                html += `
+                    <li class="mb-2">
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" name="attendance" value="${index}">
+                            <span class="ml-2">${student}</span>
+                        </label>
+                    </li>
+                `;
+            });
+            html += '</ul>';
+            studentList.innerHTML = html;
+        }
+
+        function saveAttendance() {
+            const selectedClass = classSelect.value;
+            const date = dateInput.value;
+            const attendanceChecks = document.querySelectorAll('input[name="attendance"]:checked');
+
+            if (!selectedClass || !date) {
+                alert('Please select a class and date.');
+                return;
+            }
+
+            const presentStudents = Array.from(attendanceChecks).map(check => students[selectedClass][check.value]);
+
+            // In a real application, you would send this data to a server
+            console.log('Attendance saved:', {
+                class: selectedClass,
+                date: date,
+                presentStudents: presentStudents
+            });
+
+            alert('Attendance saved successfully!');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Sheet Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 font-sans">
+    <div class="max-w-lg mx-auto mt-10 p-6 bg-white shadow-md rounded-md">
+        <h1 class="text-2xl font-bold text-center mb-6">Result Sheet Generator</h1>
+        <form id="resultForm" class="space-y-4">
+            <div>
+                <label for="studentName" class="block text-sm font-medium text-gray-700">Student Name:</label>
+                <input type="text" id="studentName" required
+                    class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label for="studentID" class="block text-sm font-medium text-gray-700">Student ID:</label>
+                <input type="text" id="studentID" required
+                    class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label for="teluguGrade" class="block text-sm font-medium text-gray-700">Telugu Grade:</label>
+                <input type="number" id="teluguGrade" min="0" max="100" required
+                    class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label for="hindiGrade" class="block text-sm font-medium text-gray-700">Hindi Grade:</label>
+                <input type="number" id="hindiGrade" min="0" max="100" required
+                    class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label for="englishGrade" class="block text-sm font-medium text-gray-700">English Grade:</label>
+                <input type="number" id="englishGrade" min="0" max="100" required
+                    class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label for="mathGrade" class="block text-sm font-medium text-gray-700">Math Grade:</label>
+                <input type="number" id="mathGrade" min="0" max="100" required
+                    class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label for="scienceGrade" class="block text-sm font-medium text-gray-700">Science Grade:</label>
+                <input type="number" id="scienceGrade" min="0" max="100" required
+                    class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label for="socialGrade" class="block text-sm font-medium text-gray-700">Social Grade:</label>
+                <input type="number" id="socialGrade" min="0" max="100" required
+                    class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-blue-500 focus:outline-none">
+            </div>
+            <button type="button" onclick="generateResult()"
+                class="w-full bg-blue-500 text-white font-medium py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300">
+                Generate Result
+            </button>
+        </form>
+
+        <div id="resultContainer" class="mt-6"></div>
+    </div>
+
+    <script>
+        function generateResult() {
+            // Get values from the form
+            var studentName = document.getElementById('studentName').value;
+            var studentID = document.getElementById('studentID').value;
+            var teluguGrade = parseFloat(document.getElementById('teluguGrade').value);
+            var hindiGrade = parseFloat(document.getElementById('hindiGrade').value);
+            var englishGrade = parseFloat(document.getElementById('englishGrade').value);
+            var mathGrade = parseFloat(document.getElementById('mathGrade').value);
+            var scienceGrade = parseFloat(document.getElementById('scienceGrade').value);
+            var socialGrade = parseFloat(document.getElementById('socialGrade').value);
+
+            // Calculate total and average
+            var totalMarks = teluguGrade + hindiGrade + englishGrade + mathGrade + scienceGrade + socialGrade;
+            var averageMarks = totalMarks / 6;
+
+            // Determine the grade
+            var grade = "";
+            if (averageMarks >= 90) {
+                grade = "A";
+            } else if (averageMarks >= 70) {
+                grade = "B";
+            } else if (averageMarks >= 60) {
+                grade = "C";
+            } else if (averageMarks >= 40) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+
+            // Display the result
+            var resultContainer = document.getElementById('resultContainer');
+            resultContainer.innerHTML = `
+                <div class="bg-gray-100 p-4 rounded shadow-md">
+                    <h2 class="text-xl font-bold mb-4">Result Sheet</h2>
+                    <table class="w-full border-collapse border border-gray-300">
+                        <tr>
+                            <th class="border border-gray-300 px-2 py-1 bg-gray-200">Student Name</th>
+                            <td class="border border-gray-300 px-2 py-1">${studentName}</td>
+                        </tr>
+                        <tr>
+                            <th class="border border-gray-300 px-2 py-1 bg-gray-200">Student ID</th>
+                            <td class="border border-gray-300 px-2 py-1">${studentID}</td>
+                        </tr>
+                        <tr>
+                            <th class="border border-gray-300 px-2 py-1 bg-gray-200">Telugu Grade</th>
+                            <td class="border border-gray-300 px-2 py-1">${teluguGrade}</td>
+                        </tr>
+                        <tr>
+                            <th class="border border-gray-300 px-2 py-1 bg-gray-200">Hindi Grade</th>
+                            <td class="border border-gray-300 px-2 py-1">${hindiGrade}</td>
+                        </tr>
+                        <tr>
+                            <th class="border border-gray-300 px-2 py-1 bg-gray-200">English Grade</th>
+                            <td class="border border-gray-300 px-2 py-1">${englishGrade}</td>
+                        </tr>
+                        <tr>
+                            <th class="border border-gray-300 px-2 py-1 bg-gray-200">Math Grade</th>
+                            <td class="border border-gray-300 px-2 py-1">${mathGrade}</td>
+                        </tr>
+                        <tr>
+                            <th class="border border-gray-300 px-2 py-1 bg-gray-200">Science Grade</th>
+                            <td class="border border-gray-300 px-2 py-1">${scienceGrade}</td>
+                        </tr>
+                        <tr>
+                            <th class="border border-gray-300 px-2 py-1 bg-gray-200">Social Grade</th>
+                            <td class="border border-gray-300 px-2 py-1">${socialGrade}</td>
+                        </tr>
+                        <tr>
+                            <th class="border border-gray-300 px-2 py-1 bg-gray-200">Total Marks</th>
+                            <td class="border border-gray-300 px-2 py-1">${totalMarks}</td>
+                        </tr>
+                        <tr>
+                            <th class="border border-gray-300 px-2 py-1 bg-gray-200">Average Marks</th>
+                            <td class="border border-gray-300 px-2 py-1">${averageMarks.toFixed(2)}</td>
+                        </tr>
+                        <tr>
+                            <th class="border border-gray-300 px-2 py-1 bg-gray-200">Grade</th>
+                            <td class="border border-gray-300 px-2 py-1">${grade}</td>
+                        </tr>
+                    </table>
+                </div>
+            `;
+        }
+    </script>
+</body>
+
+</html>
